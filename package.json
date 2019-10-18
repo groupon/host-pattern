@@ -1,0 +1,44 @@
+{
+  "name": "host-pattern",
+  "version": "1.1.1",
+  "description": "Summarize and expand host patterns",
+  "main": "index.js",
+  "types": "typedefs.d.ts",
+  "files": [
+    "index.js",
+    "typedefs.d.ts"
+  ],
+  "scripts": {
+    "test": "eslint index.js test && mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/groupon/host-pattern.git"
+  },
+  "keywords": [
+    "host",
+    "pattern",
+    "glob"
+  ],
+  "author": "Groupon <opensource@groupon.com>",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "license": {
+      "exclude": [
+        "."
+      ]
+    }
+  },
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/groupon/host-pattern/issues"
+  },
+  "homepage": "https://github.com/groupon/host-pattern#readme",
+  "devDependencies": {
+    "assertive": "^2.0.2",
+    "eslint": "^1.7.3",
+    "eslint-config-airbnb": "~0.1.0",
+    "mocha": "^2.3.3",
+    "npub": "^2.2.0"
+  }
+}
