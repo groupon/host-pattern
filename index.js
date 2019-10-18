@@ -1,6 +1,8 @@
 'use strict';
 
-function byNumeric(a, b) { return a - b; }
+function byNumeric(a, b) {
+  return a - b;
+}
 
 function flatten(array) {
   return [].concat.apply([], array);
@@ -8,37 +10,40 @@ function flatten(array) {
 
 function matchAll(regex, text) {
   /* eslint no-cond-assign: 0 */
-  var out = [];
-  var match;
+  const out = [];
+  let match;
   while ((match = regex.exec(text)) !== null) {
     out.push(match);
   }
   return out;
 }
 
-var GROUP = new RegExp([
-  // Every match starts either at the beginning or after ,/;, surrounded by optional whitespace
-  '(?:^|\\s*[,;]\\s*)',
-  // This is the actual group, e.g. "my-host.example.com" or "my<pattern>xyz"
-  '(?:',
-  // The prefix is mandatory right now
-  '([^<>,;\\s]+)',
-  // Optional: a range (e.g. <1,2-4,8>) section
-  '(?:',
-  '<([^>]*)>', // We capture the actual range expression
-  ')?',
-  // The trailing part is optional
-  '([^,;\\s]*)',
-  ')', // end of actual group
-].join(''), 'g');
-var HOST = /^([^\d,;\s<>]+)(\d*)([^,;\s<>]*)$/;
+const GROUP = new RegExp(
+  [
+    // Every match starts either at the beginning or after ,/;, surrounded by optional whitespace
+    '(?:^|\\s*[,;]\\s*)',
+    // This is the actual group, e.g. "my-host.example.com" or "my<pattern>xyz"
+    '(?:',
+    // The prefix is mandatory right now
+    '([^<>,;\\s]+)',
+    // Optional: a range (e.g. <1,2-4,8>) section
+    '(?:',
+    '<([^>]*)>', // We capture the actual range expression
+    ')?',
+    // The trailing part is optional
+    '([^,;\\s]*)',
+    ')', // end of actual group
+  ].join(''),
+  'g'
+);
+const HOST = /^([^\d,;\s<>]+)(\d*)([^,;\s<>]*)$/;
 
 function parseSubRange(subRange) {
-  var parts = subRange.split(/\s*-\s*/);
-  var start = +parts[0];
-  var end = +parts[1];
+  const parts = subRange.split(/\s*-\s*/);
+  let start = +parts[0];
+  const end = +parts[1];
 
-  var out = [ start ];
+  const out = [start];
   while (end > start) {
     out.push(++start);
   }
@@ -50,15 +55,19 @@ function parseRange(range) {
 }
 
 function parseGroup(match) {
-  var prefix = match[1];
-  var range = match[2];
-  var postfix = match[3];
+  const prefix = match[1];
+  const range = match[2];
+  const postfix = match[3];
 
   if (/[<>]/.test(postfix)) {
     if (range) {
-      throw new SyntaxError('Multiple ranges in one group: ' + JSON.stringify(match[0]));
+      throw new SyntaxError(
+        `Multiple ranges in one group: ${JSON.stringify(match[0])}`
+      );
     }
-    throw new SyntaxError('Invalid range definition in ' + JSON.stringify(match[0]));
+    throw new SyntaxError(
+      `Invalid range definition in ${JSON.stringify(match[0])}`
+    );
   }
 
   function buildName(n) {
@@ -80,23 +89,23 @@ function expand(pattern) {
     return [];
   }
 
-  var groups = matchAll(GROUP, pattern).map(parseGroup);
+  const groups = matchAll(GROUP, pattern).map(parseGroup);
   return flatten(groups);
 }
 exports.expand = expand;
 
 function buildRanges(members) {
-  var ranges = [];
-  var start = members.shift();
-  var end = start;
-  var current;
+  const ranges = [];
+  let start = members.shift();
+  let end = start;
+  let current;
 
   if (!start) return '';
-  if (!members.length) return '' + start;
+  if (!members.length) return `${start}`;
 
   function emitRange() {
     if (!start) return;
-    ranges.push(start === end ? ('' + start) : (start + '-' + end));
+    ranges.push(start === end ? `${start}` : `${start}-${end}`);
   }
 
   do {
@@ -111,45 +120,45 @@ function buildRanges(members) {
 
   emitRange();
 
-  return '<' + ranges.join(',') + '>';
+  return `<${ranges.join(',')}>`;
 }
 
 function addHostToGroup(host) {
-  var match = host.match(HOST);
+  const match = host.match(HOST);
   if (!match) {
-    throw new Error('Invalid host: ' + JSON.stringify(host));
+    throw new Error(`Invalid host: ${JSON.stringify(host)}`);
   }
-  var prefix = match[1];
-  var index = match[2];
-  var postfix = match[3];
-  var key = prefix + postfix;
+  const prefix = match[1];
+  const index = match[2];
+  const postfix = match[3];
+  const key = prefix + postfix;
 
   if (index === '') {
     this.simple.push(prefix + postfix);
-    return this;
+    return;
   }
 
-  var group = this.sets[key] = this.sets[key] || {
-    prefix: prefix,
-    postfix: postfix,
+  const group = (this.sets[key] = this.sets[key] || {
+    prefix,
+    postfix,
     members: [],
-  };
+  });
   group.members.push(+index);
 }
 
 function abbreviate(hosts) {
   if (!Array.isArray(hosts)) {
-    throw new TypeError('abbreviate(string[]): `' + hosts + '` is not an array');
+    throw new TypeError(`abbreviate(string[]): \`${hosts}\` is not an array`);
   }
   if (hosts.length < 1) return '';
 
-  var sets = {};
-  var simple = [];
-  hosts.forEach(addHostToGroup, { sets: sets, simple: simple });
+  const sets = {};
+  const simple = [];
+  hosts.forEach(addHostToGroup, { sets, simple });
 
   function abbreviateGroup(key) {
-    var group = sets[key];
-    var members = group.members.sort(byNumeric);
+    const group = sets[key];
+    const members = group.members.sort(byNumeric);
     return group.prefix + buildRanges(members) + group.postfix;
   }
 
