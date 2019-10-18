@@ -11,7 +11,7 @@ npm install --save host-pattern
 ### `expand`
 
 ```js
-var hostPattern = require('host-pattern');
+const hostPattern = require('host-pattern');
 
 // Lists (comma-separated):
 hostPattern.expand('example.net,www.host.com');
@@ -33,7 +33,7 @@ hostPattern.expand('my-host<1,3-5>.example.com');
 ### `abbreviate`
 
 ```js
-var hostPattern = require('host-pattern');
+const hostPattern = require('host-pattern');
 
 // Lists (comma-separated):
 hostPattern.abbreviate([ 'example.net', 'www.host.com' ]);

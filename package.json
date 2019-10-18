@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "description": "Summarize and expand host patterns",
   "license": "BSD-3-Clause",
-  "main": "index.js",
+  "main": "lib/host-pattern.js",
   "homepage": "https://github.com/groupon/host-pattern#readme",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
       ]
     }
   },
-  "types": "typedefs.d.ts",
+  "types": "lib/typedefs.d.ts",
   "dependencies": {},
   "devDependencies": {
     "assertive": "^2.0.2",
@@ -53,21 +53,20 @@
     "name": "Groupon",
     "email": "opensource@groupon.com"
   },
+  "contributors": [
+    "Jan Krems <jan.krems@gmail.com>",
+    "David Bushong <dbushong@groupon.com>"
+  ],
   "keywords": [
     "host",
     "pattern",
     "glob"
   ],
   "files": [
-    "index.js",
-    "typedefs.d.ts"
+    "*.js",
+    "lib"
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "license": {
-      "exclude": [
-        "."
-      ]
-    }
+    "registry": "https://registry.npmjs.org"
   }
 }
