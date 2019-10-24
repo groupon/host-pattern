@@ -2,43 +2,70 @@
   "name": "host-pattern",
   "version": "1.1.1",
   "description": "Summarize and expand host patterns",
-  "main": "index.js",
-  "types": "typedefs.d.ts",
-  "files": [
-    "index.js",
-    "typedefs.d.ts"
-  ],
-  "scripts": {
-    "test": "eslint index.js test && mocha"
-  },
+  "license": "BSD-3-Clause",
+  "main": "lib/host-pattern.js",
+  "homepage": "https://github.com/groupon/host-pattern#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/groupon/host-pattern.git"
+    "url": "https://github.com/groupon/host-pattern"
   },
+  "bugs": {
+    "url": "https://github.com/groupon/host-pattern/issues"
+  },
+  "scripts": {
+    "lint": "npm-run-all lint:*",
+    "lint:js": "eslint .",
+    "pretest": "npm-run-all pretest:*",
+    "test": "npm-run-all test:*",
+    "posttest": "npm-run-all posttest:*",
+    "pretest:lint": "npm-run-all lint:*",
+    "posttest:nlm": "nlm verify",
+    "test:unit": "mocha"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "nlm": {
+    "license": {
+      "files": [
+        "lib"
+      ]
+    }
+  },
+  "types": "lib/typedefs.d.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "assertive": "^2.0.2",
+    "eslint": "^6.2.1",
+    "eslint-config-airbnb": "~0.1.0",
+    "eslint-config-groupon": "^7.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-mocha": "^6.1.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "mocha": "^6.2.0",
+    "nlm": "^3.6.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2"
+  },
+  "author": {
+    "name": "Groupon",
+    "email": "opensource@groupon.com"
+  },
+  "contributors": [
+    "Jan Krems <jan.krems@gmail.com>",
+    "David Bushong <dbushong@groupon.com>"
+  ],
   "keywords": [
     "host",
     "pattern",
     "glob"
   ],
-  "author": "Groupon <opensource@groupon.com>",
+  "files": [
+    "*.js",
+    "lib"
+  ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "license": {
-      "exclude": [
-        "."
-      ]
-    }
-  },
-  "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/groupon/host-pattern/issues"
-  },
-  "homepage": "https://github.com/groupon/host-pattern#readme",
-  "devDependencies": {
-    "assertive": "^2.0.2",
-    "eslint": "^1.7.3",
-    "eslint-config-airbnb": "~0.1.0",
-    "mocha": "^2.3.3",
-    "npub": "^2.2.0"
+    "registry": "https://registry.npmjs.org"
   }
 }
