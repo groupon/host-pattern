@@ -1,3 +1,9 @@
+### 1.1.3
+
+* chore(deps): bump acorn from 7.1.0 to 7.1.1 - **[@dependabot[bot]](https://github.com/apps/dependabot)** [#2](https://github.com/groupon/host-pattern/pull/2)
+  - [`e2de6b0`](https://github.com/groupon/host-pattern/commit/e2de6b0fb9add86e5b6cdf3321cd5843a544d343) **chore:** bump acorn from 7.1.0 to 7.1.1 - see: [7](- [Commits](https://github.com/acornjs/acorn/compare/7)
+
+
 ### 1.1.2
 
 * initial refactor & publishing - **[@dbushong](https://github.com/dbushong)** [#1](https://github.com/groupon/host-pattern/pull/1)
