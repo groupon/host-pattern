@@ -1,3 +1,9 @@
+### 1.1.4
+
+* chore(deps): bump lodash from 4.17.15 to 4.17.19 - **[@dependabot[bot]](https://github.com/apps/dependabot)** [#3](https://github.com/groupon/host-pattern/pull/3)
+  - [`51a9cfa`](https://github.com/groupon/host-pattern/commit/51a9cfa527f4605326a4718a0695d7517aaac03f) **chore:** bump lodash from 4.17.15 to 4.17.19 - see: [4](- [Commits](https://github.com/lodash/lodash/compare/4)
+
+
 ### 1.1.3
 
 * chore(deps): bump acorn from 7.1.0 to 7.1.1 - **[@dependabot[bot]](https://github.com/apps/dependabot)** [#2](https://github.com/groupon/host-pattern/pull/2)
