@@ -1,3 +1,9 @@
+### 1.1.5
+
+* chore(deps): bump ini from 1.3.5 to 1.3.8 - **[@dependabot[bot]](https://github.com/apps/dependabot)** [#4](https://github.com/groupon/host-pattern/pull/4)
+  - [`5af34f0`](https://github.com/groupon/host-pattern/commit/5af34f0d46fcc5c8983c8316634f4616feaf6d07) **chore:** bump ini from 1.3.5 to 1.3.8 - see: [v1](- [Commits](https://github.com/isaacs/ini/compare/v1)
+
+
 ### 1.1.4
 
 * chore(deps): bump lodash from 4.17.15 to 4.17.19 - **[@dependabot[bot]](https://github.com/apps/dependabot)** [#3](https://github.com/groupon/host-pattern/pull/3)
